@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Smooth scrolling magic */
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; }
+.font-code { font-family: 'Fira Code', monospace; }
+
+.glass-card {
+    background: rgba(30, 27, 75, 0.65);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.sticky-note {
+    background: #fef08a;
+    color: #1e1b4b;
+    transform: rotate(-1deg);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Tracing styles with bottom underline cursor */
+.char-pending { opacity: 0.35; color: #a5b4fc; }
+.char-typed { opacity: 1; color: #34d399; }
+.char-cursor {
+    opacity: 1;
+    color: #34d399;
+    border-bottom: 2px solid #34d399;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #34d399; }
+}
+
+/* Smooth organic breathing transition */
+#breathCircle {
+    transition: transform 3.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 3.5s ease;
+}
+
+/* Dynamic Background Themes */
+.bg-theme {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+.bg-theme.active { opacity: 1; }
+
+/* Theme 1: Starry Cosmos */
+#theme1 {
+    background: radial-gradient(circle at 20% 30%, #1e1b4b 0%, #09090b 100%),
+                linear-gradient(135deg, #311042 0%, #0f172a 100%);
+}
+/* Theme 2: Ocean Serenity */
+#theme2 {
+    background: linear-gradient(135deg, #02233b 0%, #061121 50%, #020617 100%);
+}
+/* Theme 3: Nebula Dream */
+#theme3 {
+    background: linear-gradient(120deg, #2e1065 0%, #17032c 50%, #050505 100%);
+}
+
+/* Canvas Particle Layer for Fireflies */
+#particleCanvas {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Add this to your existing input.css */
+.font-playfair { 
+    font-family: 'Playfair Display', serif; 
+}
+
+/* Custom styling for the volume slider */
+input[type=range] {
+    accent-color: #a855f7; /* Tailwind purple-500 */
+}
+
+@import "tailwindcss";
+
+/* Futuristic Robotic Font */
+.font-robot {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Custom styling for the volume slider */
+input[type=range] {
+    accent-color: #a855f7;
+}
+
+@import "tailwindcss";
+
+.font-robot {
+    font-family: 'Orbitron', sans-serif;
+}
+
+input[type=range] {
+    accent-color: #a855f7;
+}
+
+/* Equalizer bar bouncing animation */
+@keyframes bounceBar {
+    0%, 100% { height: 4px; }
+    50% { height: 16px; }
+}
+.eq-bar-1 { animation: bounceBar 0.8s infinite ease-in-out; }
+.eq-bar-2 { animation: bounceBar 0.5s infinite ease-in-out; }
+.eq-bar-3 { animation: bounceBar 0.7s infinite ease-in-out; }
