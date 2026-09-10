@@ -253,6 +253,23 @@ $(document).ready(function() {
         $('#pomoToggleBtn').text('Start');
     });
 
+    // --- MOBILE POMODORO SYNC ---
+    $('#mobilePomoToggleBtn').click(function() {
+        // Triggers the main desktop toggle button logic seamlessly!
+        $('#pomoToggleBtn').click();
+        $(this).text($('#pomoToggleBtn').text());
+    });
+
+    $('#mobilePomoResetBtn').click(function() {
+        $('#pomoResetBtn').click();
+        $('#mobilePomoToggleBtn').text('Start');
+    });
+
+    // Keep mobile display updated every second (update inside your main setInterval loop if needed, or mirror it)
+    setInterval(() => {
+        $('#mobilePomoTime').text($('#navPomoTime').text());
+    }, 500);
+
     // --- BREATHING WIDGET ---
     let breathState = 'stopped';
     let breathTimeouts = [];
