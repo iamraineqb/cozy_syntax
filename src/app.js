@@ -530,13 +530,106 @@ $(document).ready(function() {
         $('#typingCard').focus();
     });
 
-    // --- CONTACT FORM LOGIC ---
-    $('#contactForm').submit(function(e) {
-        e.preventDefault();
-        const name = $('#senderName').val();
-        if(name) {
-            $(this.elements).prop('disabled', true);
-            $('#formSuccess').removeClass('hidden').hide().fadeIn(300);
-        }
+// --- COZY MINDSET QUOTE SHUFFLER ---
+    const cozyQuotes = [
+        "\"It's not a bug, it's an undocumented feature. Take a deep breath and refactor.\"",
+        "\"To iterate is human, to recurse divine.\" — L. Peter Deutsch",
+        "\"Do not fear mistakes. You will know failure. Continue to reach out anyway.\"",
+        "\"Come to me, all you who are weary and burdened, and I will give you rest.\" — Matthew 11:28",
+        "\"Code is like humor. When you have to explain it, it’s bad.\" — Cory House",
+        "\"Simplicity is prerequisite for reliability.\" — Edsger W. Dijkstra",
+        "\"Take a 5-minute break. Your code will still be broken when you get back, but your mind will be clearer.\"",
+        "\"The best error message is the one that never shows up.\""
+    ];
+
+    $('#shuffleQuoteBtn').click(function() {
+        // Pick a random quote from the array
+        const randomQuote = cozyQuotes[Math.floor(Math.random() * cozyQuotes.length)];
+        
+        // Quick fade effect for smoothness
+        $('#quoteText').fadeOut(200, function() {
+            $(this).text(randomQuote).fadeIn(200);
+        });
     });
+
+    // --- COZY MINDSET QUOTE SHUFFLER ---
+$(document).ready(function() {
+    const cozyQuotes = [
+        "\"It's not a bug, it's an undocumented feature. Take a deep breath and refactor.\"",
+        "\"To iterate is human, to recurse divine.\" — L. Peter Deutsch",
+        "\"Do not fear mistakes. You will know failure. Continue to reach out anyway.\"",
+        "\"Come to me, all you who are weary and burdened, and I will give you rest.\" — Matthew 11:28",
+        "\"Code is like humor. When you have to explain it, it’s bad.\" — Cory House",
+        "\"Simplicity is prerequisite for reliability.\" — Edsger W. Dijkstra",
+        "\"Take a 5-minute break. Your code will still be broken when you get back, but your mind will be clearer.\"",
+        "\"The best error message is the one that never shows up.\""
+    ];
+
+    $('#shuffleQuoteBtn').click(function() {
+        const randomQuote = cozyQuotes[Math.floor(Math.random() * cozyQuotes.length)];
+        $('#quoteText').fadeOut(200, function() {
+            $(this).text(randomQuote).fadeIn(200);
+        });
+    });
+});
+
+// --- PROFILE DROPDOWN & AVATAR UPLOAD ---
+$('#profileMenuBtn').click(function(e) {
+    e.stopPropagation();
+    $('#profileDropdown').toggleClass('hidden');
+    $('#soundDropdown').addClass('hidden');
+    $('#pomoDropdown').addClass('hidden');
+});
+
+// Close dropdown when clicking outside
+$(document).click(function() {
+    $('#profileDropdown').addClass('hidden');
+});
+
+$('#profileDropdown').click(function(e) {
+    e.stopPropagation();
+});
+
+// Handle custom picture upload for the circle avatar
+$('#avatarUploadInput').change(function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            $('#navAvatarImg').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+// Theme switcher function for the profile menu
+window.setTheme = function(themeName) {
+    $('.bg-theme').removeClass('active');
+    $('#' + themeName).addClass('active');
+};
+
+// Theme Switcher with Active State Highlighting
+window.setTheme = function(themeName) {
+    $('.bg-theme').removeClass('active');
+    $('#' + themeName).addClass('active');
+
+    // Reset all theme buttons to standard dark look
+    $('.theme-option-btn').removeClass('bg-purple-600 border-2 border-emerald-400 shadow-lg shadow-purple-500/40 text-white').addClass('bg-slate-900/60 border border-indigo-900 text-indigo-100');
+
+    // Highlight the selected button
+    let btnId = '';
+    if (themeName === 'theme1') btnId = '#themeBtn1';
+    if (themeName === 'theme2') btnId = '#themeBtn2';
+    if (themeName === 'theme3') btnId = '#themeBtn3';
+
+    if (btnId) {
+        $(btnId).removeClass('bg-slate-900/60 border border-indigo-900 text-indigo-100').addClass('bg-purple-600 border-2 border-emerald-400 shadow-lg shadow-purple-500/40 text-white');
+    }
+};
+
+// Set default highlight on page load (Cosmos is theme1)
+$(document).ready(function() {
+    setTheme('theme1');
+});
+
 });
